@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Love - Erick & Valeria ❤️ 1 Mes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Pacifico&family=Great+Vibes&family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        :root {
+            --primary: #E1306C;
+            --secondary: #FFDC80;
+            --love-red: #ff4d6d;
+            --love-pink: #ff8fa3;
+            --text-primary: #262626;
+            --text-secondary: #8e8e8e;
+            --bg-color: #fafafa;
+            --border-color: #dbdbdb;
+            --white: #ffffff;
+            --story-gradient: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            --love-gradient: linear-gradient(45deg, #ff4d6d, #ff8fa3, #ffb3c1);
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            padding-top: 60px;
+            padding-bottom: 50px;
+            overflow-x: hidden;
+        }
+        
+        /* Header estilo Instagram */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            z-index: 1000;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            font-weight: bold;
+            background: var(--love-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo span {
+            color: var(--love-red);
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .header-icons i {
+            font-size: 20px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .header-icons i:hover {
+            color: var(--primary);
+        }
+        
+        /* Stories */
+        .stories-container {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin: 15px auto;
+            padding: 16px 10px;
+            max-width: 500px;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .stories-container::-webkit-scrollbar {
+            height: 4px;
+        }
+        
+        .stories-container::-webkit-scrollbar-thumb {
+            background-color: var(--love-pink);
+            border-radius: 10px;
+        }
+        
+        .story {
+            display: inline-block;
+            text-align: center;
+            margin: 0 8px;
+            width: 65px;
+        }
+        
+        .story-avatar {
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            padding: 3px;
+            background: var(--story-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .story-avatar:hover {
+            transform: scale(1.05);
+        }
+        
+        .story-avatar img {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+        }
+        
+        .story-username {
+            font-size: 11px;
+            color: var(--text-primary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 65px;
+        }
+        
+        /* Feed de publicaciones */
+        .feed {
+            max-width: 500px;
+            margin: 0 auto 80px;
+        }
+        
+        .post {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .post:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+        }
+        
+        .post-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .post-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--love-pink);
+        }
+        
+        .post-username {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .post-options {
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+        
+        .post-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .post-video {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .post-actions {
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .post-actions-left {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .post-actions i {
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: transform 0.2s;
+        }
+        
+        .post-actions i:hover {
+            transform: scale(1.1);
+        }
+        
+        .post-actions i.active {
+            color: var(--love-red);
+        }
+        
+        .post-likes {
+            padding: 8px 15px 0;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .post-caption {
+            padding: 8px 15px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .post-caption .username {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        
+        .post-comments {
+            padding: 8px 15px 0;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .post-time {
+            padding: 8px 15px 12px;
+            color: var(--text-secondary);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Footer para aniversario */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 50px;
+            z-index: 1000;
+            padding: 0 5px;
+        }
+        
+        .footer i {
+            font-size: 20px;
+            color: var(--text-primary);
+            transition: color 0.3s;
+        }
+        
+        .footer i:hover {
+            color: var(--primary);
+        }
+        
+        .footer i.active {
+            color: var(--love-red);
+        }
+        
+        /* Banner de aniversario */
+        .anniversary-banner {
+            background: linear-gradient(90deg, #ff4d6d, #ff8fa3, #ffb3c1, #ffccd5);
+            color: white;
+            text-align: center;
+            padding: 12px 15px;
+            margin: 10px auto;
+            max-width: 500px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .anniversary-banner::before {
+            content: "❤️";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 20px;
+            opacity: 0.5;
+        }
+        
+        .anniversary-banner::after {
+            content: "💖";
+            position: absolute;
+            bottom: -5px;
+            right: 10px;
+            font-size: 20px;
+            opacity: 0.5;
+        }
+        
+        /* Tipos especiales de post */
+        .poem-post {
+            background: linear-gradient(135deg, #fff0f3, #ffe5ec);
+            border-left: 5px solid var(--love-red);
+        }
+        
+        .note-post {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-left: 5px solid #ffb703;
+        }
+        
+        .meme-post {
+            background: linear-gradient(135deg, #caf0f8, #90e0ef);
+            border-left: 5px solid #0077b6;
+        }
+        
+        .poem-content {
+            font-family: 'Dancing Script', cursive;
+            font-size: 20px;
+            line-height: 1.6;
+            padding: 20px;
+            text-align: center;
+            color: #590d22;
+        }
+        
+        .note-content {
+            font-family: 'Great Vibes', cursive;
+            font-size: 22px;
+            line-height: 1.6;
+            padding: 20px;
+            text-align: center;
+            color: #6a040f;
+        }
+        
+        .meme-content {
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 18px;
+            line-height: 1.5;
+            padding: 15px;
+            text-align: center;
+            color: #03045e;
+        }
+        
+        .meme-img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        
+        .animated-note {
+            background: linear-gradient(135deg, #ffccd5, #ffb3c1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .animated-note::before {
+            content: "💌";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            font-size: 24px;
+        }
+        
+        .gif-container {
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            background-color: #f8f9fa;
+        }
+        
+        .gif-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #ff4d6d, #ff8fa3, #ffb3c1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gif-placeholder::after {
+            content: "GIF";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--love-red);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .header {
+                padding: 0 10px;
+            }
+            
+            .header-icons {
+                gap: 12px;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+            
+            .stories-container, .feed, .anniversary-banner {
+                max-width: 95%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .post-image, .post-video {
+                max-height: 400px;
+            }
+            
+            .story {
+                width: 60px;
+                margin: 0 5px;
+            }
+            
+            .story-avatar {
+                width: 56px;
+                height: 56px;
+            }
+            
+            .story-avatar img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .poem-content, .note-content {
+                font-size: 18px;
+                padding: 15px;
+            }
+            
+            .gif-placeholder {
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .post-image, .post-video {
+                max-height: 350px;
+            }
+            
+            .header-icons i, .footer i {
+                font-size: 18px;
+            }
+            
+            .anniversary-banner {
+                font-size: 14px;
+                padding: 10px;
+            }
+            
+            .story-username {
+                font-size: 10px;
+            }
+            
+            .post-avatar {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .post-username {
+                font-size: 13px;
+            }
+            
+            .post-actions i {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .post-image, .post-video {
+                max-height: 300px;
+            }
+            
+            .logo {
+                font-size: 22px;
+            }
+            
+            .anniversary-banner {
+                font-size: 13px;
+            }
+        }
+        
+        .heart-animation {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            5% { transform: scale(1.1); }
+            10% { transform: scale(1); }
+            15% { transform: scale(1.1); }
+            20% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+        
+        .love-count {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: linear-gradient(135deg, #ffccd5, #ffb3c1);
+            border-radius: 10px;
+            margin: 15px;
+            font-weight: bold;
+            color: #590d22;
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+        
+        .photo-grid img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .post-tag {
+            display: inline-block;
+            background-color: var(--love-pink);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 11px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .tags-container {
+            padding: 0 15px 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <h1 class="logo">Erick & Valeria<span>❤️</span></h1>
+        </div>
+        <div class="header-icons">
+            <i class="fas fa-home active"></i>
+            <i class="fas fa-paper-plane"></i>
+            <i class="fas fa-plus-square"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-user"></i>
+        </div>
+    </header>
+    
+    <!-- Banner de aniversario -->
+    <div class="anniversary-banner">
+        <i class="fas fa-heart heart-animation"></i> ¡Feliz 1 mes juntos Erick & Valeria! <i class="fas fa-heart heart-animation"></i>
+    </div>
+    
+    <!-- Stories -->
+    <div class="stories-container">
+        <div class="story">
+            <div class="story-avatar">
+                <img src="..\img\1.jpg" alt="Avatar">
+            </div>
+            <div class="story-username">Erick</div>
+        </div>
+        <div class="story">
+            <div class="story-avatar">
+                <img src="..\img\2.jpg" alt="Avatar">
+            </div>
+            <div class="story-username">Valeria</div>
+        </div>
+        <div class="story">
+            <div class="story-avatar">
+                <img src="https://i.pravatar.cc/150?img=8" alt="Avatar">
+            </div>
+            <div class="story-username">Carlos</div>
+        </div>
+        <div class="story">
+            <div class="story-avatar">
+                <img src="https://i.pravatar.cc/150?img=12" alt="Avatar">
+            </div>
+            <div class="story-username">Ana</div>
+        </div>
+        <div class="story">
+            <div class="story-avatar">
+                <img src="https://i.pravatar.cc/150?img=15" alt="Avatar">
+            </div>
+            <div class="story-username">Miguel</div>
+        </div>
+        <div class="story">
+            <div class="story-avatar">
+                <img src="https://i.pravatar.cc/150?img=20" alt="Avatar">
+            </div>
+            <div class="story-username">Sofía</div>
+        </div>
+    </div>
+    
+    <!-- Feed de publicaciones -->
+    <div class="feed" id="feed">
+        <!-- Las publicaciones se generarán con JavaScript -->
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <i class="fas fa-home active"></i>
+        <i class="fas fa-search"></i>
+        <i class="fas fa-camera"></i>
+        <i class="fas fa-heart"></i>
+        <i class="fas fa-user"></i>
+    </footer>
+
+    <script>
+        // Datos de publicaciones para Erick y Valeria
+        const posts = [
+            {
+                id: 1,
+                type: "photo",
+                username: "Erick_T",
+                avatar: "img/1.jpg",
+                image: "img/0.jpg",
+                likes: 287,
+                caption: "Celebrando nuestro primer mes juntos mi amor ❤️ #1MesConValeria #ErickYValeria",
+                comments: [
+                    {username: "Valeria", text: "Te amo mi vida ❤️ el mes más feliz de mi vida"},
+                    {username: "carlos_amigo", text: "¡Felicitaciones hermano! Se ven muy felices"},
+                    {username: "ana_bff", text: "Que linda pareja 😍 #AmorVerdadero"}
+                ],
+                time: "HACE 2 HORAS",
+                tags: ["#1Mes", "#Amor", "#ParejaFeliz"]
+            },
+            {
+                id: 2,
+                type: "poem",
+                username: "Valeria",
+                avatar: "img/2.jpg",
+                likes: 342,
+                caption: "Un poema para mi amor en nuestro primer mes 💖",
+                comments: [
+                    {username: "Erick_T", text: "Eres la poeta más linda del mundo, te amo Valeria ❤️"},
+                    {username: "sofia_ami", text: "Que hermoso poema Valeria 😭"},
+                    {username: "miguel_comp", text: "¡Qué talento! Feliz mes"}
+                ],
+                time: "HACE 5 HORAS",
+                tags: ["#PoemaDeAmor", "#1Mes", "#ErickYValeria"]
+            },
+            {
+                id: 3,
+                type: "meme",
+                username: "Erick_T",
+                avatar: "img/1.jpg",
+                likes: 189,
+                caption: "Cuando Valeria me sonríe 😂 #MemesDeAmor #ParejaGraciosa",
+                comments: [
+                    {username: "Valeria", text: "Jajaja es verdad, tú haces lo mismo 😂"},
+                    {username: "carlos_amigo", text: "Jajaja totalmente identificado"},
+                    {username: "ana_bff", text: "Los memes de pareja son los mejores"}
+                ],
+                time: "HACE 8 HORAS",
+                tags: ["#Meme", "#AmorDivertido", "#Pareja"]
+            },
+            {
+                id: 4,
+                type: "note",
+                username: "Valeria",
+                avatar: "img/2.jpg",
+                likes: 265,
+                caption: "Una cartita para mi novio en nuestro mesiversario 💌",
+                comments: [
+                    {username: "Erick_T", text: "Leí esto con lágrimas en los ojos, te amo mi vida 💖"},
+                    {username: "sofia_ami", text: "Que linda cartita 😍"},
+                    {username: "miguel_comp", text: "Hermosas palabras Valeria"}
+                ],
+                time: "HACE 12 HORAS",
+                tags: ["#Cartita", "#Mesiversario", "#Amor"]
+            },
+            {
+                id: 5,
+                type: "gif",
+                username: "Erick_T",
+                avatar: "img/1.jpg",
+                likes: 178,
+                caption: "Así me siento en este primer mes contigo Valeria 🥰 #GIFDeAmor #Feliz",
+                comments: [
+                    {username: "Valeria", text: "Yo también mi amor, el corazón me late fuerte por ti 💓"},
+                    {username: "carlos_amigo", text: "Ese GIF es perfecto jaja"},
+                    {username: "ana_bff", text: "Que tiernos 😊"}
+                ],
+                time: "HACE 1 DÍA",
+                tags: ["#GIF", "#Feliz", "#Amor"]
+            },
+            {
+                id: 6,
+                type: "photo",
+                username: "Valeria",
+                avatar: "img/2.jpg",
+                image: "img/kika.jpg",
+                likes: 421,
+                caption: "Nuestra primera foto juntos 💕 #Recuerdo #PrimerMes #ErickYValeria",
+                comments: [
+                    {username: "Erick_T", text: "El día más feliz de mi vida 💖"},
+                    {username: "sofia_ami", text: "Se ven tan enamorados desde el principio 😍"},
+                    {username: "miguel_comp", text: "Linda foto, felicidades"}
+                ],
+                time: "HACE 1 DÍA",
+                tags: ["#PrimeraFoto", "#Recuerdo", "#1Mes"]
+            }
+        ];
+        
+        // Generar las publicaciones en el feed
+        const feed = document.getElementById('feed');
+        
+        posts.forEach(post => {
+            let postElement = document.createElement('div');
+            postElement.className = 'post';
+            
+            // Añadir clase especial según el tipo de post
+            if (post.type === 'poem') postElement.classList.add('poem-post');
+            if (post.type === 'note') postElement.classList.add('note-post');
+            if (post.type === 'meme') postElement.classList.add('meme-post');
+            
+            // Generar número aleatorio de likes (entre 150 y 500)
+            const randomLikes = post.likes || Math.floor(Math.random() * 350) + 150;
+            
+            // Generar HTML según el tipo de post
+            let postContent = '';
+            
+            switch(post.type) {
+                case 'photo':
+                    postContent = `
+                        <img src="${post.image || 'https://picsum.photos/500/500?random=' + post.id}" alt="Post" class="post-image" onerror="this.src='https://picsum.photos/500/500?random=' + ${post.id}">
+                    `;
+                    break;
+                    
+                case 'poem':
+                    postContent = `
+                        <div class="poem-content">
+                            <p>En este primer mes contigo,</p>
+                            <p>mi corazón late con más fuerza,</p>
+                            <p>cada día a tu lado es un regalo,</p>
+                            <p>una dulce y hermosa pieza.</p>
+                            <br>
+                            <p>Erick, eres mi sol en la mañana,</p>
+                            <p>mi luna en la oscuridad,</p>
+                            <p>en solo un mes has cambiado mi vida,</p>
+                            <p>llenándola de felicidad.</p>
+                            <br>
+                            <p>Te amo más de lo que las palabras,</p>
+                            <p>pueden alguna vez expresar,</p>
+                            <p>y espero que sean muchos meses más,</p>
+                            <p>a tu lado para siempre estar.</p>
+                            <br>
+                            <p>Con todo mi amor,</p>
+                            <p>Valeria ❤️</p>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'meme':
+                    postContent = `
+                        <div class="meme-content">
+                            <p><strong>Cuando Vale me dice que me ama:</strong></p>
+                            <img src="img/jaja.gif" class="meme-img">
+                            <p>Mi corazón: 💓💓💓</p>
+                            <p>Mi cara: 😊😍🥰</p>
+                            <p>Mi mente: "Es la mujer más perfecta"</p>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'note':
+                    postContent = `
+                        <div class="animated-note">
+                            <div class="note-content">
+                                <p>Mi querido Erick,</p>
+                                <p>Este primer mes contigo ha sido mágico.</p>
+                                <p>Cada risa, cada mirada, cada momento juntos</p>
+                                <p>ha llenado mi vida de colores y alegría.</p>
+                                <br>
+                                <p>Gracias por ser tan increíble,</p>
+                                <p>por hacerme reír, por escucharme,</p>
+                                <p>por ser mi apoyo y mi mejor amigo.</p>
+                                <br>
+                                <p>Espero que esto sea solo el comienzo</p>
+                                <p>de una historia larga y hermosa juntos.</p>
+                                <br>
+                                <p>Con todo mi cariño,</p>
+                                <p>Tu Valeria 💖</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'gif':
+                    postContent = `
+                        <div class="gif-container">
+                            <div class="gif-placeholder">
+                                <div>
+                                    
+                                <img src="img/pa.gif" class="meme-img">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            postElement.innerHTML = `
+                <div class="post-header">
+                    <div class="post-user">
+                        <img src="${post.avatar}" alt="Avatar" class="post-avatar">
+                        <div class="post-username">${post.username}</div>
+                    </div>
+                    <div class="post-options">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                </div>
+                ${postContent}
+                <div class="post-actions">
+                    <div class="post-actions-left">
+                        <i class="far fa-heart" data-post="${post.id}"></i>
+                        <i class="far fa-comment"></i>
+                        <i class="far fa-paper-plane"></i>
+                    </div>
+                    <div class="post-actions-right">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
+                <div class="post-likes" id="likes-${post.id}">${randomLikes.toLocaleString()} me gusta</div>
+                <div class="post-caption">
+                    <span class="username">${post.username}</span> ${post.caption}
+                </div>
+                ${post.tags ? `<div class="tags-container">${post.tags.map(tag => `<span class="post-tag">${tag}</span>`).join('')}</div>` : ''}
+                <div class="post-comments">
+                    ${post.comments.map(comment => `
+                        <div style="margin-bottom: 5px;">
+                            <span class="username">${comment.username}</span> ${comment.text}
+                        </div>
+                    `).join('')}
+                    <div style="color: var(--text-secondary); margin-top: 5px; font-size: 13px;">Ver los ${post.comments.length + Math.floor(Math.random() * 10)} comentarios</div>
+                </div>
+                <div class="post-time">${post.time}</div>
+            `;
+            
+            feed.appendChild(postElement);
+        });
+        
+        // Post especial del mesiversario
+        const anniversaryPost = document.createElement('div');
+        anniversaryPost.className = 'post';
+        anniversaryPost.innerHTML = `
+            <div class="post-header">
+                <div class="post-user">
+                    <img src="img/2.jpg" class="post-avatar">
+                    <div class="post-username">Erick_y_Valeria</div>
+                </div>
+            </div>
+            <div class="love-count">
+                <i class="fas fa-heart heart-animation" style="font-size: 24px;"></i>
+                <div style="font-size: 18px;">¡1 MES JUNTOS!</div>
+                <i class="fas fa-heart heart-animation" style="font-size: 24px;"></i>
+            </div>
+            <div class="photo-grid">
+                <img src="1.jpg" onerror="this.src='https://picsum.photos/200/200?random=1'">
+                <img src="2.jpg" onerror="this.src='https://picsum.photos/200/200?random=2'">
+                <img src="3.jpg" onerror="this.src='https://picsum.photos/200/200?random=3'">
+                <img src="4.jpg" onerror="this.src='https://picsum.photos/200/200?random=4'">
+                <img src="5.jpg" onerror="this.src='https://picsum.photos/200/200?random=5'">
+                <img src="6.jpg" onerror="this.src='https://picsum.photos/200/200?random=6'">
+            </div>
+            <div class="post-caption" style="text-align: center; padding: 15px; font-weight: bold; color: var(--love-red);">
+                Nuestro primer mes en fotos ❤️ #ErickYValeria #1Mes #Amor
+            </div>
+            <div class="tags-container">
+                <span class="post-tag">#1MesDeAmor</span>
+                <span class="post-tag">#ErickYValeria</span>
+                <span class="post-tag">#ParejaFeliz</span>
+                <span class="post-tag">#Mesiversario</span>
+                <span class="post-tag">#AmorVerdadero</span>
+            </div>
+            <div class="post-actions">
+                <div class="post-actions-left">
+                    <i class="fas fa-heart active" data-post="anniversary"></i>
+                    <i class="far fa-comment"></i>
+                    <i class="far fa-paper-plane"></i>
+                </div>
+            </div>
+            <div class="post-likes" id="likes-anniversary">1,234 me gusta</div>
+            <div class="post-comments">
+                <div><span class="username">Valeria</span> El mes más feliz de mi vida mi amor ❤️</div>
+                <div><span class="username">Erick_T</span> Solo el primero de muchos más mi vida, te amo 💖</div>
+                <div><span class="username">carlos_amigo</span> ¡Felicidades a los dos! Se ven muy felices</div>
+                <div><span class="username">ana_bff</span> Que linda pareja, feliz mes 😍</div>
+            </div>
+            <div class="post-time">HACE 1 DÍA</div>
+        `;
+        
+        feed.appendChild(anniversaryPost);
+        
+        // Post de video (simulado)
+        const videoPost = document.createElement('div');
+        videoPost.className = 'post';
+        videoPost.innerHTML = `
+            <div class="post-header">
+                <div class="post-user">
+                    <img src="img/1.jpg" alt="Avatar" class="post-avatar">
+                    <div class="post-username">Erick_T</div>
+                </div>
+            </div>
+            <div style="position: relative;">
+                <div style="width: 100%; height: 300px; background: linear-gradient(45deg, #000, #333); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; position: relative;">
+                    <i class="fas fa-play-circle" style="font-size: 50px; margin-right: 10px;"></i>
+                    <div>VIDEO DE NUESTRO PRIMER MES</div>
+                    <div style="position: absolute; bottom: 10px; right: 10px; background-color: rgba(0,0,0,0.7); color: white; padding: 3px 8px; border-radius: 5px; font-size: 12px;">2:30</div>
+                </div>
+            </div>
+            <div class="post-caption" style="padding: 15px; text-align: center;">
+                Un pequeño recopilatorio de nuestro primer mes juntos ❤️ #VideoDeAmor #Recuerdos #ErickYValeria
+            </div>
+            <div class="tags-container">
+                <span class="post-tag">#Video</span>
+                <span class="post-tag">#Recopilatorio</span>
+                <span class="post-tag">#1Mes</span>
+                <span class="post-tag">#Amor</span>
+            </div>
+            <div class="post-actions">
+                <div class="post-actions-left">
+                    <i class="far fa-heart" data-post="video"></i>
+                    <i class="far fa-comment"></i>
+                    <i class="far fa-paper-plane"></i>
+                </div>
+            </div>
+            <div class="post-likes" id="likes-video">876 me gusta</div>
+            <div class="post-time">HACE 2 DÍAS</div>
+        `;
+        
+        feed.appendChild(videoPost);
+        
+        // Agregar funcionalidad de "me gusta"
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('fa-heart')) {
+                const postId = e.target.getAttribute('data-post');
+                const likesElement = document.getElementById(`likes-${postId}`);
+                if (likesElement) {
+                    const currentLikesText = likesElement.textContent.replace(/[^0-9]/g, '');
+                    const currentLikes = currentLikesText ? parseInt(currentLikesText) : 0;
+                    const newLikes = e.target.classList.contains('far') ? currentLikes + 1 : currentLikes - 1;
+                    
+                    likesElement.textContent = `${newLikes.toLocaleString()} me gusta`;
+                    
+                    e.target.classList.toggle('far');
+                    e.target.classList.toggle('fas');
+                    e.target.classList.toggle('active');
+                    
+                    // Animación de corazón
+                    e.target.classList.add('heart-animation');
+                    setTimeout(() => {
+                        e.target.classList.remove('heart-animation');
+                    }, 1500);
+                }
+            }
+        });
+        
+        // Hacer que los corazones del banner también latan
+        const bannerHearts = document.querySelectorAll('.anniversary-banner .fa-heart');
+        bannerHearts.forEach(heart => {
+            setInterval(() => {
+                heart.classList.toggle('heart-animation');
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
